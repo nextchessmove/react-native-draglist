@@ -395,7 +395,7 @@ function CellRendererComponent<T>(props: CellRendererProps<T>) {
           duration: SLIDE_MILLIS,
           easing: Easing.inOut(Easing.linear),
           toValue: layouts[activeKey].extent,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }).start();
         setIsOffset(true);
         return;
@@ -404,7 +404,7 @@ function CellRendererComponent<T>(props: CellRendererProps<T>) {
           duration: SLIDE_MILLIS,
           easing: Easing.inOut(Easing.linear),
           toValue: -layouts[activeKey].extent,
-          useNativeDriver: true,
+          useNativeDriver: false,
         }).start();
         setIsOffset(true);
         return;
@@ -422,7 +422,7 @@ function CellRendererComponent<T>(props: CellRendererProps<T>) {
         duration: SLIDE_MILLIS,
         easing: Easing.inOut(Easing.linear),
         toValue: 0,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }).start();
     }
   }, [isOffset]);
@@ -447,19 +447,19 @@ function CellRendererComponent<T>(props: CellRendererProps<T>) {
         style,
         isActive
           ? {
-              elevation: 1,
-              zIndex: 999,
-              transform: [
-                horizontal ? { translateX: pan } : { translateY: pan },
-              ],
-            }
+            elevation: 1,
+            zIndex: 999,
+            transform: [
+              horizontal ? { translateX: pan } : { translateY: pan },
+            ],
+          }
           : {
-              elevation: 0,
-              zIndex: 0,
-              transform: [
-                horizontal ? { translateX: anim } : { translateY: anim },
-              ],
-            },
+            elevation: 0,
+            zIndex: 0,
+            transform: [
+              horizontal ? { translateX: anim } : { translateY: anim },
+            ],
+          },
       ]}
       onLayout={onCellLayout}
     >
